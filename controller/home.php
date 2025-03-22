@@ -90,8 +90,8 @@ if (isset($_GET['comment'])) {
     }
     exit();
 } else {
-    if(isset($_POST['search'])){
-       $keyword = $_POST['search'];
+    if(isset($_GET['search'])){   //_POST
+       $keyword = $_GET['search']; //_POST
        #filter
        #$keyword = str_replace("script", "", strtolower($keyword));
        #$keyword = htmlspecialchars($keyword, ENT_QUOTES, 'UTF-8');

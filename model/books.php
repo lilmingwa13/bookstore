@@ -11,6 +11,8 @@ class Books {
     }
 
     function select_book($key=null) {
+        ## ngăn sqli
+        #$realkey = mysqli_real_escape_string($this->connect, $key);
         if (is_null($key)){
             $sql = "SELECT * FROM `books` ORDER BY `bookid`";
         }
@@ -34,6 +36,10 @@ class Books {
                 array_push($result, $row);
             }
             return $result;
+        }
+        //them
+        if(!$query){
+            return False;
         }
         return False;
     }

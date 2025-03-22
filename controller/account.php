@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
 
 
 
-    #them code
+    #them code for CSRF
     $token = isset($_SESSION['edit_user_token']) ? $_SESSION['edit_user_token'] : "";
     if ($token && $_POST['token'] === $token) {
         // delete the record
@@ -91,6 +91,7 @@ if (isset($_POST['submit'])) {
     // } else {
     //     $msg = array("status" => false, "txt" => "Có lỗi xảy ra!");
     // }
+
 }
 $u = $user->get_user(getUsername());
 require_once 'view/account/account.php';

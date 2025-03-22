@@ -4,9 +4,11 @@
         <h4><?php echo $keyword ?></h4>
     </div>
     <div class="col-md-6">
-        <form method="POST">
+        <!-- POST -->
+        <form method="GET">  
             <div class="input-group">
-                <input class="form-control" placeholder="Search Products..." name="search" type="text">
+                <!-- type, htmlspecialchars($_GET['search']) : ''; ?> -->
+                <input class="form-control" placeholder="Search Products..." name="search" type="text" value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>"> 
                 <span class="input-group-btn">
                     <button type="submit" class="btn btn-primary btn-lg"><i class="icon icon-search"></i></button>
                 </span>

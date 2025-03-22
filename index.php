@@ -8,17 +8,22 @@ session_start();
 require_once 'config.php';
 require_once 'lib.php';
 $privilege = privilege();
-//$pattern1 = "/[\x{20}-\x{2E}]/";
-//$pattern2 = "/admin/i";    //
+
+##them
+$pattern1 = "/[\x{20}-\x{2E}]/";
 
 if (isset($_GET['action'])) {
     $page = $_GET['action'];
-    //if (preg_match($pattern1, $page)){
-        //echo 'Hack detected';
-    //}
-    //else{
-        //require_once ("controller/{$page}.php");
-    //}
+    #them
+
+    // if (preg_match($pattern1, $page)){
+    //     echo 'Hack detected';
+    // }
+    // else{
+    //     require_once ("controller/{$page}.php");
+    // }
+    
+    #code chinh
     include ("controller/{$page}.php");
 
 } else {

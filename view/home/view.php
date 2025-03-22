@@ -1,12 +1,18 @@
 <div class="row">
     <div class="col-md-4">
-        <?php $bookImage = ($bookDetail['image']) ? BOOK_DIR . $bookDetail['image'] : BOOK_DIR . "default.jpg"; ?>
+        <!--<?php $bookImage = ($bookDetail['image']) ? BOOK_DIR . $bookDetail['image'] : BOOK_DIR . "default.jpg"; ?> #comment-->
+        <?php 
+        $bookImage = isset($bookDetail[0]['image']) 
+            ? BOOK_DIR . $bookDetail[0]['image'] 
+            : BOOK_DIR . "default.jpg"; 
+        ?>
+        <!-- <?php  print_r($bookDetail); ?> #DEBUG[] -->
         <img src="<?php echo BASE_URL . "{$bookImage}"; ?>" class="img-thumbnail img-thumbnail-book-lage img-responsive">
     </div>
     <div class="col-md-8">
-        <h3><?php echo $bookDetail['title']; ?></h3>
-        <h4><?php echo $bookDetail['price']; ?> VNĐ</h4>
-        <p><?php echo $bookDetail['description']; ?></p>
+        <h3><?php echo $bookDetail[0]['title']; ?></h3>
+        <h4><?php echo $bookDetail[0]['price']; ?> VNĐ</h4>
+        <p><?php echo $bookDetail[0]['description']; ?></p>
     </div>
 </div>
 
@@ -56,7 +62,8 @@
         $.ajax({
             type: "POST",
             data: {cmt: cmt},
-            url: "<?php echo BASE_URL . "index.php?comment={$bookDetail['bookid']}&add"; ?>",
+            // them [0] vao bookDetail
+            url: "<?php echo BASE_URL . "index.php?comment={$bookDetail[0]['bookid']}&add"; ?>", 
             success: function(response) {
                 var res = $.parseJSON(response);
                 if (res['status'] == false)
@@ -71,7 +78,8 @@
     function getListComment() {
         $.ajax({
             type: "GET",
-            url: "<?php echo BASE_URL . "index.php?comment={$bookDetail['bookid']}" ?>",
+            //them [0] vao bookDetail
+            url: "<?php echo BASE_URL . "index.php?comment={$bookDetail[0]['bookid']}" ?>",
             success: function(response) {
                 $("#lstComment").html(response);
             }
